@@ -1,0 +1,10 @@
+<launch>
+    <node pkg="turtle_controller" exec="number_publisher" >
+<!--
+           <param name ="" value =""/>
+           -->
+           <param from="$(find-pkg-share my_robot_bringup)/config/number_app.yaml"/>
+           
+    </node>
+    <node pkg="cpp_pkg" exec="number_counter"/> 
+</launch>

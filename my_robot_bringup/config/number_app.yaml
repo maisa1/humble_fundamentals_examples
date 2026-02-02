@@ -1,0 +1,4 @@
+/number_publisher:
+  ros__parameters:
+    data : 6
+    timer_period: 1.5

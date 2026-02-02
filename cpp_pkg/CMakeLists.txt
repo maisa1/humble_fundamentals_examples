@@ -1,0 +1,63 @@
+cmake_minimum_required(VERSION 3.8)
+project(cpp_pkg)
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
+# find dependencies
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(example_interfaces REQUIRED) 
+find_package(my_robot_interfaces REQUIRED) 
+
+add_executable(cpp_test src/cpp_skeleton.cpp)
+ament_target_dependencies(cpp_test rclcpp) 
+
+add_executable(cpp_oop_test src/cpp_skeleton_oop.cpp)
+ament_target_dependencies(cpp_oop_test rclcpp) 
+
+add_executable(chatter src/pub_test.cpp)
+ament_target_dependencies(chatter rclcpp std_msgs) 
+
+add_executable(listener src/sub_test.cpp)
+ament_target_dependencies(listener rclcpp std_msgs) 
+
+add_executable(pubsub src/pub_sub.cpp)
+ament_target_dependencies(pubsub rclcpp std_msgs) 
+
+add_executable(number_counter src/number_counter.cpp)
+ament_target_dependencies(number_counter rclcpp example_interfaces) 
+
+add_executable(add_two_ints_server src/add_two_ints_server.cpp)
+ament_target_dependencies(add_two_ints_server rclcpp example_interfaces) 
+
+add_executable(add_two_ints_client_no_oop src/add_two_ints_client_no_oop.cpp)
+ament_target_dependencies(add_two_ints_client_no_oop rclcpp example_interfaces) 
+
+add_executable(add_two_ints_client src/add_two_ints_client.cpp)
+ament_target_dependencies(add_two_ints_client rclcpp example_interfaces) 
+
+add_executable(number_counter_service src/number_counter_service.cpp)
+ament_target_dependencies(number_counter_service rclcpp example_interfaces) 
+
+add_executable(hardware_status_publisher src/hardware_status_publisher.cpp)
+ament_target_dependencies(hardware_status_publisher rclcpp my_robot_interfaces) 
+
+
+install(TARGETS
+cpp_test
+cpp_oop_test
+chatter
+listener
+pubsub
+number_counter
+add_two_ints_server
+add_two_ints_client_no_oop
+add_two_ints_client
+number_counter_service
+hardware_status_publisher
+DESTINATION lib/${PROJECT_NAME}
+
+)
+ament_package()
