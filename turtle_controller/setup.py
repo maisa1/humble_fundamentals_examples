@@ -36,7 +36,10 @@ setup(
                             "led_panel_state=turtle_controller.led_panel:main",
                             "battery_node=turtle_controller.battery_node:main",
                             "draw_circle=turtle_controller.draw_circle:main",
-                            "circular_spiral=turtle_controller.circular_spiral:main"
+                            "circular_spiral=turtle_controller.circular_spiral:main",
+                            "turtle_polygon=turtle_controller.turtle_polygon:main",
+                            "turtle_polygon_without_orientation=turtle_controller.turtle_polygon_without_orientation:main"
+
 
         ], 
     },
